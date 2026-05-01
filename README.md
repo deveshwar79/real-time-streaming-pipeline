@@ -1,43 +1,80 @@
-# Real-Time Streaming Data Pipeline
+# Real-Time Streaming Data Pipeline (Kafka + Spark)
 
 ## Overview
-This project demonstrates a real-time data processing pipeline designed for low-latency and scalable event-driven architectures.
+This project focuses on designing a real-time, event-driven data pipeline for low-latency processing and scalable streaming analytics.
+
+Unlike batch-oriented systems, this architecture is optimized for continuous data ingestion, real-time transformations, and immediate downstream consumption.
+
+---
 
 ## Architecture Flow
-1. Data Source:
-   - Event streams / application logs / transactions
+
+1. Data Sources:
+   - Application logs, user events, transactions
 
 2. Ingestion Layer:
-   - Kafka (message queue for real-time ingestion)
+   - Apache Kafka (distributed event streaming platform)
+   - Topic partitioning for scalability
 
 3. Processing Layer:
    - Spark Structured Streaming
-   - Real-time transformations and aggregations
+   - Real-time transformations, aggregations, filtering
 
 4. Storage Layer:
-   - Data Lake (S3 / ADLS)
-   - BigQuery (analytics layer)
+   - Data Lake (AWS S3 / Azure ADLS)
+   - BigQuery for analytics and querying
 
 5. Consumption Layer:
-   - Dashboards / BI tools / alert systems
+   - Dashboards (Power BI / Tableau)
+   - Alerts / Monitoring systems
 
-## Key Design Considerations
-- Low-latency processing for near real-time analytics
-- Fault-tolerant streaming architecture using Kafka
-- Scalable processing using Spark Structured Streaming
-- Partitioning and checkpointing for reliability
+---
+
+## Streaming-Specific Design Concepts
+
+- **Event-driven architecture**
+  Enables continuous processing of streaming data
+
+- **Low-latency processing**
+  Designed to minimize delay between ingestion and consumption
+
+- **Checkpointing**
+  Ensures fault tolerance and recovery in case of failures
+
+- **Windowing (Tumbling / Sliding)**
+  Supports real-time aggregations over time intervals
+
+- **Exactly-once processing**
+  Prevents duplicate data during failures or retries
+
+---
+
+## Key Design Decisions
+
+- Kafka selected for high-throughput, distributed ingestion
+- Spark Structured Streaming for unified batch + streaming processing
+- Storage layer decoupled to support scalability and replayability
+- Partitioning strategy applied to improve performance and parallelism
+
+---
 
 ## Technology Stack
+
 - Kafka
 - Apache Spark (Structured Streaming)
-- Python (PySpark)
-- AWS / Azure / GCP storage
-- BigQuery (analytics)
+- PySpark
+- AWS S3 / Azure ADLS / BigQuery
+- BI Tools (Power BI / Tableau)
+
+---
 
 ## Architecture Diagram
-(To be added)
+![Architecture](streaming-architecture.png)
+
+---
 
 ## Outcome
-- Enables near real-time data processing
-- Supports scalable streaming workloads
-- Improves business responsiveness
+
+- Enables near real-time data processing and analytics
+- Supports scalable event-driven workloads
+- Improves system responsiveness and monitoring capabilities
